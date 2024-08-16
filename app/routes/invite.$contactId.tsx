@@ -33,7 +33,6 @@ export const action =  async ({
 export default function Contact() {
   const {contact} = useLoaderData<typeof loader>();
 
-  console.log(contact)
 
 
 
