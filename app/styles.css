@@ -136,3 +136,12 @@ small {
     letter-spacing: 0.1em;
     font-size: calc(1.5rem + 1vw);   
 }
+
+.initials {
+    display:block;
+    width: 100%;
+    height: auto;
+    margin: 25vh auto 15vh;
+    max-width: 50vh;
+
+}
