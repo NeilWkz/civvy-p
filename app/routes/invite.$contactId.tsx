@@ -50,7 +50,7 @@ export default function Contact() {
   return (
     <div id="contact" className="container mx-auto px-12">
       <img src="/letters.svg" alt="letters" className="initials" />
-      <div className="pt-10 text-center">
+      <div className="pt-10 md:max-w-md m-auto text-center">
         <h5>Dear</h5>
         <h1>{contact.guest ? <>{contact.guest}</> : <i>No Name</i>}</h1>
         {inviteTypeHandler(contact.inviteSize)}

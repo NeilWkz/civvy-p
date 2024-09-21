@@ -51,6 +51,9 @@ export async function updateContact(id: string, updates: ContactMutation) {
     };
 
 
+    console.log(invite)
+
+
   new Promise((resolve, reject) => {
       base(AIRTABLE_TABLE_ID).update(
         [
@@ -61,7 +64,8 @@ export async function updateContact(id: string, updates: ContactMutation) {
         ],
         function (err, updatedRecord) {
           if (err) {
-            reject(err)
+            console.error(err)
+             reject(err)
             return
           }
          
