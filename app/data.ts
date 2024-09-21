@@ -1,10 +1,8 @@
-////////////////////////////////////////////////////////////////////////////////
-// 🛑 Nothing in here has anything to do with Remix, it's just a fake database
-////////////////////////////////////////////////////////////////////////////////
+
 import Airtable from 'airtable';
-const AIRTABLE_TABLE_ID = import.meta.env.VITE_AIRTABLE_TABLE_ID
-const AIRTABLE_API_KEY = import.meta.env.VITE_AIRTABLE_API_KEY
-const AIRTABLE_BASE_ID = import.meta.env.VITE_AIRTABLE_BASE_ID
+const AIRTABLE_TABLE_ID = env.AIRTABLE_TABLE_ID || import.meta.env.VITE_AIRTABLE_TABLE_ID
+const AIRTABLE_API_KEY = env.AIRTABLE_API_KEY || import.meta.env.VITE_AIRTABLE_API_KEY
+const AIRTABLE_BASE_ID = env.AIRTABLE_BASE_ID || import.meta.env.VITE_AIRTABLE_BASE_ID
 
 
 type ContactMutation = {
@@ -26,7 +24,7 @@ const base = new Airtable({ apiKey:AIRTABLE_API_KEY  }).base(AIRTABLE_BASE_ID);
 
 
 ////////////////////////////////////////////////////////////////////////////////
-// Handful of helper functions to be called from route loaders and actions
+// Just a wrapper for the Airtable API
 export async function getContacts() {}
  
 
