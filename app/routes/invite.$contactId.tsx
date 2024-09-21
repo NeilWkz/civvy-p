@@ -1,6 +1,6 @@
 import { Form, useLoaderData } from "@remix-run/react";
 
-import { json } from "@remix-run/node";
+import { json } from "@remix-run/cloudflare";
 
 import { getContact, updateContact } from "../data";
 import {stringToBool} from "../utils";

@@ -1,6 +1,6 @@
 import {deleteContact} from '../data'
-import {redirect} from "@remix-run/node";
-import type {ActionFunctionArgs} from "@remix-run/node";
+import {redirect} from "@remix-run/cloudflare";
+import type {ActionFunctionArgs} from "@remix-run/cloudflare";
 import invariant from "tiny-invariant";
 
 export const action = async({params}: ActionFunctionArgs) => {
