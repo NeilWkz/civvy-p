@@ -33,8 +33,6 @@ export const action = async ({ params, request }: ActionFunctionArgs) => {
 export default function Contact() {
   const { contact } = useLoaderData<typeof loader>();
 
-  console.log(contact);
-
   const weekender = stringToBool(contact.weekender);
 
 

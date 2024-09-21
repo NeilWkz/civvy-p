@@ -1,7 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 // 🛑 Nothing in here has anything to do with Remix, it's just a fake database
 ////////////////////////////////////////////////////////////////////////////////
-import {airtableFetch} from './services/airtable.server';
 import Airtable from 'airtable';
 const AIRTABLE_TABLE_ID = import.meta.env.VITE_AIRTABLE_TABLE_ID
 const AIRTABLE_API_KEY = import.meta.env.VITE_AIRTABLE_API_KEY
@@ -32,13 +31,19 @@ export async function getContacts() {}
  
 
 export async function getContact(id: string) {
-  const invite = await airtableFetch.get(id);
 
-  if (!invite) {
-    throw new Error(`No invite found for ${id}`);
-  }
+
+  return new Promise((resolve, reject) => {
+    base(AIRTABLE_TABLE_ID).find(id, function (err, record) {
+      if (err) {
+        console.error(err)
+        reject(err)
+        return
+      }
+      resolve(record.fields)
+    })
+  })  
   
-  return invite.data.fields
 }
 
 export async function updateContact(id: string, updates: ContactMutation) {
@@ -50,8 +55,6 @@ export async function updateContact(id: string, updates: ContactMutation) {
       ...updates,
     };
 
-
-    console.log(invite)
 
 
   new Promise((resolve, reject) => {
