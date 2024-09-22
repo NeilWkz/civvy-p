@@ -1,12 +1,12 @@
 
 import Airtable from 'airtable';
-const AIRTABLE_TABLE_ID = env.AIRTABLE_TABLE_ID || import.meta.env.VITE_AIRTABLE_TABLE_ID
-const AIRTABLE_API_KEY = env.AIRTABLE_API_KEY || import.meta.env.VITE_AIRTABLE_API_KEY
-const AIRTABLE_BASE_ID = env.AIRTABLE_BASE_ID || import.meta.env.VITE_AIRTABLE_BASE_ID
+const TABLE_ID =  import.meta.env.VITE_AIRTABLE_TABLE_ID
+const API_KEY =  import.meta.env.VITE_AIRTABLE_API_KEY
+const BASE_ID = import.meta.env.VITE_AIRTABLE_BASE_ID
 
 
 type ContactMutation = {
-  id?: string;
+  id: string;
   first?: string;
   last?: string;
   avatar?: string;
@@ -15,12 +15,10 @@ type ContactMutation = {
   favorite?: boolean;
 };
 
-export type ContactRecord = ContactMutation & {
-  id: string;
-  createdAt: string;
-};
 
-const base = new Airtable({ apiKey:AIRTABLE_API_KEY  }).base(AIRTABLE_BASE_ID);
+
+
+const base = new Airtable({ apiKey:API_KEY  }).base(BASE_ID);
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -32,7 +30,7 @@ export async function getContact(id: string) {
 
 
   return new Promise((resolve, reject) => {
-    base(AIRTABLE_TABLE_ID).find(id, function (err, record) {
+    base(TABLE_ID).find(id, function (err, record) {
       if (err) {
         console.error(err)
         reject(err)
@@ -56,7 +54,7 @@ export async function updateContact(id: string, updates: ContactMutation) {
 
 
   new Promise((resolve, reject) => {
-      base(AIRTABLE_TABLE_ID).update(
+      base(TABLE_ID).update(
         [
           {
             id,
