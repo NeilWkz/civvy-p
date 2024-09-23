@@ -25,7 +25,6 @@ server.use(
 		mode: process.env.NODE_ENV as "development" | "production",
 		// getLoadContext is optional, the default function is the same as here
 		getLoadContext(c) {
-			console.log("getLoadContext", c);
 			return c.env;
 		},
 	}),
