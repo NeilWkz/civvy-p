@@ -1,82 +1,90 @@
+import Airtable from "airtable";
 
-import Airtable from 'airtable';
-const TABLE_ID =  import.meta.env.VITE_AIRTABLE_TABLE_ID
-const API_KEY =  import.meta.env.VITE_AIRTABLE_API_KEY
-const BASE_ID = import.meta.env.VITE_AIRTABLE_BASE_ID
-
-
-type ContactMutation = {
-  id: string;
-  first?: string;
-  last?: string;
-  avatar?: string;
-  twitter?: string;
+type InviteMutation = {
+  rsvp?: string;
+  email?: string;
+  phone?: string;
+  dietary?: string;
+  children?: string;
+  numChildren?: string;
+  planOnCamping?: string;
+  wantGlamping?: string;
   notes?: string;
-  favorite?: boolean;
 };
 
-
-
-
-const base = new Airtable({ apiKey:API_KEY  }).base(BASE_ID);
-
+const initialiseBase = ({ apiKey, baseID }) => {
+  new Airtable({ apiKey }).base(baseID);
+};
 
 ////////////////////////////////////////////////////////////////////////////////
 // Just a wrapper for the Airtable API
-export async function getContacts() {}
- 
 
-export async function getContact(id: string) {
+type GetContactArgs = {
+  id: string;
+  apiKey?: string;
+  baseID?: string;
+};
 
+export async function getContact({
+  id,
+  apiKey,
+  baseID,
+  tableID,
+}: GetContactArgs) {
+  const base = initialiseBase({ apiKey, baseID });
 
   return new Promise((resolve, reject) => {
-    base(TABLE_ID).find(id, function (err, record) {
+    base(tableID).find(id, function (err, record) {
       if (err) {
-        console.error(err)
-        reject(err)
-        return
+        console.error(err);
+        reject(err);
+        return;
       }
-      resolve(record.fields)
-    })
-  })  
-  
+      resolve(record.fields);
+    });
+  });
 }
 
-export async function updateContact(id: string, updates: ContactMutation) {
+type UpdateContactArgs = {
+  id: string;
+  updates: InviteMutation;
+  apiKey?: string;
+  baseID?: string;
+};
 
-   const invite = await getContact(id);
+export async function updateContact({
+  id,
+  updates,
+  apiKey,
+  baseID,
+  tableID,
+}: UpdateContactArgs) {
+  const base = initialiseBase({ apiKey, baseID });
+
+  const invite = await getContact(id);
   delete invite.id; // remove the id from the fields object
-    const fields = {
-      ...invite,
-      ...updates,
-    };
-
-
+  const fields = {
+    ...invite,
+    ...updates,
+  };
 
   new Promise((resolve, reject) => {
-      base(TABLE_ID).update(
-        [
-          {
-            id,
-            fields
-          }
-        ],
-        function (err, updatedRecord) {
-          if (err) {
-            console.error(err)
-             reject(err)
-            return
-          }
-         
-            resolve(updatedRecord)
-         
+    base(tableID).update(
+      [
+        {
+          id,
+          fields,
+        },
+      ],
+      function (err, updatedRecord) {
+        if (err) {
+          console.error(err);
+          reject(err);
+          return;
         }
-      )
-    })
 
-  
-}
-
-export async function deleteContact(id: string) {
-   fakeContacts.destroy(id);
+        resolve(updatedRecord);
+      }
+    );
+  });
 }

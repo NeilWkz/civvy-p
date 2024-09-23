@@ -13,9 +13,9 @@ const POST_CODE = import.meta.env.VITE_POSTCODE
 const WEEKEND_DATE = import.meta.env.VITE_WEEKEND_DATE
 const DATE = import.meta.env.VITE_DATE
 
-export const loader = async ({ params }: LoaderFunctionArgs) => {
+export const loader = async ({ params, env }: LoaderFunctionArgs) => {
   invariant(params.contactId, "No contactId provided");
-  const contact = await getContact(params.contactId);
+  const contact = await getContact({id:params.contactId, apiKey:env.AIRTABLE_API_KEY, baseId: env.AIRTABLE_BASE_ID, tableID: env.AIRTABLE_TABLE_ID});
   if (!contact) {
     throw new Response("Not Found", { status: 404 });
   }

@@ -5,18 +5,19 @@ import invariant from "tiny-invariant";
 import { stringToBool } from "../utils";
 import { getContact, updateContact } from "../data";
 import RadioPair from "../components/RadioPair";
-export const action = async ({ params, request }: ActionsFunctionArgs) => {
+export const action = async ({ params, env, request }: ActionsFunctionArgs) => {
   invariant(params.contactId, "No contactId provided");
+  
   const formData = await request.formData();
   const updates = Object.fromEntries(formData);
   console.log(updates);
-  await updateContact(params.contactId, updates);
+  await updateContact({id: params.contactId, updates, apiKey: env.AIRTABLE_API_KEY, baseID: env.AIRTABLE_BASE_ID, tableID: env.AIRTABLE_TABLE_ID});
   return redirect(`/invite/${params.contactId}`);
 };
 
-export const loader = async ({ params }: LoaderFunctionArgs) => {
+export const loader = async ({ params, env }: LoaderFunctionArgs) => {
   invariant(params.contactId, "Missing contactId param");
-  const contact = await getContact(params.contactId);
+  const contact = await getContact({id:params.contactId, apiKey:env.AIRTABLE_API_KEY, baseID: env.AIRTABLE_BASE_ID, tableID: env.AIRTABLE_TABLE_ID});
 
   if (!contact) {
     throw new Response("Not Found", { status: 404 });
