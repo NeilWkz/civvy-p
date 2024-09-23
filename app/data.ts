@@ -13,7 +13,7 @@ type InviteMutation = {
 };
 
 const initialiseBase = ({ apiKey, baseID }) => {
-  new Airtable({ apiKey }).base(baseID);
+  return new Airtable({ apiKey }).base(baseID);
 };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -31,6 +31,7 @@ export async function getContact({
   baseID,
   tableID,
 }: GetContactArgs) {
+
   const base = initialiseBase({ apiKey, baseID });
 
   return new Promise((resolve, reject) => {
@@ -61,7 +62,7 @@ export async function updateContact({
 }: UpdateContactArgs) {
   const base = initialiseBase({ apiKey, baseID });
 
-  const invite = await getContact(id);
+  const invite = await getContact({id, apiKey, baseID, tableID});
   delete invite.id; // remove the id from the fields object
   const fields = {
     ...invite,
@@ -86,5 +87,22 @@ export async function updateContact({
         resolve(updatedRecord);
       }
     );
+  });
+}
+
+
+export async function deleteContact({ id, apiKey, baseID, tableID }) {
+  const base = initialiseBase({ apiKey, baseID });
+
+  return new Promise((resolve, reject) => {
+    base(tableID).destroy(id, function (err, deletedRecord) {
+      if (err) {
+        console.error(err);
+        reject(err);
+        return;
+      }
+
+      resolve(deletedRecord);
+    });
   });
 }

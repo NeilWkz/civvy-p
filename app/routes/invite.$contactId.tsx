@@ -3,7 +3,7 @@ import { Form, useLoaderData } from "@remix-run/react";
 import { json } from "@remix-run/cloudflare";
 
 import { getContact, updateContact } from "../data";
-import {stringToBool} from "../utils";
+import stringToBool from "../utils/stringToBool";
 import type { LoaderFunctionArgs, ActionFunctionArgs } from "@remix-run/node";
 import invariant from "tiny-invariant";
 
@@ -13,9 +13,9 @@ const POST_CODE = import.meta.env.VITE_POSTCODE
 const WEEKEND_DATE = import.meta.env.VITE_WEEKEND_DATE
 const DATE = import.meta.env.VITE_DATE
 
-export const loader = async ({ params, env }: LoaderFunctionArgs) => {
+export const loader = async ({ params, context }: LoaderFunctionArgs) => {
   invariant(params.contactId, "No contactId provided");
-  const contact = await getContact({id:params.contactId, apiKey:env.AIRTABLE_API_KEY, baseId: env.AIRTABLE_BASE_ID, tableID: env.AIRTABLE_TABLE_ID});
+  const contact = await getContact({id:params.contactId, apiKey:context.cloudflare.env.AIRTABLE_API_KEY, baseID: context.cloudflare.env.AIRTABLE_BASE_ID, tableID: context.cloudflare.env.AIRTABLE_TABLE_ID});
   if (!contact) {
     throw new Response("Not Found", { status: 404 });
   }

@@ -2,22 +2,21 @@ import type { ActionsFunctionArgs, LoaderFunctionArgs } from "@remix-run/cloudfl
 import { json, redirect } from "@remix-run/cloudflare";
 import { Form, useLoaderData, useNavigate } from "@remix-run/react";
 import invariant from "tiny-invariant";
-import { stringToBool } from "../utils";
+import stringToBool  from "../utils/stringToBool";
 import { getContact, updateContact } from "../data";
 import RadioPair from "../components/RadioPair";
-export const action = async ({ params, env, request }: ActionsFunctionArgs) => {
+export const action = async ({ params, context, request }: ActionsFunctionArgs) => {
   invariant(params.contactId, "No contactId provided");
   
   const formData = await request.formData();
   const updates = Object.fromEntries(formData);
-  console.log(updates);
-  await updateContact({id: params.contactId, updates, apiKey: env.AIRTABLE_API_KEY, baseID: env.AIRTABLE_BASE_ID, tableID: env.AIRTABLE_TABLE_ID});
+  await updateContact({id: params.contactId, updates, apiKey: context.cloudflare.env.AIRTABLE_API_KEY, baseID: context.cloudflare.env.AIRTABLE_BASE_ID, tableID: context.cloudflare.env.AIRTABLE_TABLE_ID});
   return redirect(`/invite/${params.contactId}`);
 };
 
-export const loader = async ({ params, env }: LoaderFunctionArgs) => {
+export const loader = async ({ params, context }: LoaderFunctionArgs) => {
   invariant(params.contactId, "Missing contactId param");
-  const contact = await getContact({id:params.contactId, apiKey:env.AIRTABLE_API_KEY, baseID: env.AIRTABLE_BASE_ID, tableID: env.AIRTABLE_TABLE_ID});
+  const contact = await getContact({id:params.contactId, apiKey:context.cloudflare.env.AIRTABLE_API_KEY, baseID: context.cloudflare.env.AIRTABLE_BASE_ID, tableID: context.cloudflare.env.AIRTABLE_TABLE_ID});
 
   if (!contact) {
     throw new Response("Not Found", { status: 404 });
