@@ -78,9 +78,12 @@ pages_build_output_dir = "./build/client"
 ######## PRODUCTION environment config ########
 
 # [env.production.vars]
-# API_KEY = "abc123"
 
 # [[env.production.kv_namespaces]]
 # binding = "MY_KV_NAMESPACE"
 # id = "<PRODUCTION_NAMESPACE_ID>"
 compatibility_flags = [ "nodejs_compat" ]
+
+[vars]
+AIRTABLE_BASE_ID = "appsOCTMNfq8IsfRp"
+AIRTABLE_TABLE_ID = "tbl18NnHHquMsHCSR"

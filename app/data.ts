@@ -25,13 +25,13 @@ type GetContactArgs = {
   baseID?: string;
 };
 
-export async function getContact({
+export async function getContact(props: GetContactArgs) {
+const {
   id,
   apiKey,
   baseID,
   tableID,
-}: GetContactArgs) {
-
+} = props
   const base = initialiseBase({ apiKey, baseID });
 
   return new Promise((resolve, reject) => {
@@ -53,13 +53,15 @@ type UpdateContactArgs = {
   baseID?: string;
 };
 
-export async function updateContact({
-  id,
-  updates,
-  apiKey,
-  baseID,
-  tableID,
-}: UpdateContactArgs) {
+export async function updateContact(props: UpdateContactArgs) {
+ const {
+    id,
+    updates,
+    apiKey,
+    baseID,
+    tableID,
+  } = props
+  
   const base = initialiseBase({ apiKey, baseID });
 
   const invite = await getContact({id, apiKey, baseID, tableID});
