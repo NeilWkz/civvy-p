@@ -16,6 +16,7 @@ export const action = async ({ params, context, request }: ActionsFunctionArgs) 
 
 export const loader = async ({ params, context }: LoaderFunctionArgs) => {
   invariant(params.contactId, "Missing contactId param");
+  console.log(context);
   const contact = await getContact({id:params.contactId, apiKey:context.cloudflare.env.AIRTABLE_API_KEY, baseID: context.cloudflare.env.AIRTABLE_BASE_ID, tableID: context.cloudflare.env.AIRTABLE_TABLE_ID});
 
   if (!contact) {

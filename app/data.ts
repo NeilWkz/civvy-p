@@ -26,6 +26,7 @@ type GetContactArgs = {
 };
 
 export async function getContact(props: GetContactArgs) {
+  console.log('getContact', props)
 const {
   id,
   apiKey,
@@ -54,6 +55,7 @@ type UpdateContactArgs = {
 };
 
 export async function updateContact(props: UpdateContactArgs) {
+console.log('updateContact', props)
  const {
     id,
     updates,
@@ -85,6 +87,8 @@ export async function updateContact(props: UpdateContactArgs) {
           reject(err);
           return;
         }
+
+        console.log("Updated record", updatedRecord);
 
         resolve(updatedRecord);
       }
