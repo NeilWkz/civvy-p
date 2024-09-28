@@ -58,7 +58,9 @@ small {
   font-size: calc(0.833rem + 1vw);
 }
 
-
+.fira-mono {
+  font-family: "Fira Mono", monospace;
+}
 
 @keyframes clickAnimation {
     0% { transform: scale(1) }
@@ -143,5 +145,25 @@ small {
     height: auto;
     margin: 25vh auto 15vh;
     max-width: 50vh;
+}
 
+.initials.has-responded {
+    margin: 10vh auto 5vh;
+}
+
+.button-link {
+    font-family: "Josefin Sans", sans-serif;
+    font-weight: 200;
+    font-style: italic;
+    text-decoration: none;
+    font-size: calc(0.6rem + 1vw);
+    border: 1px solid var(--color-brand-primary);
+    padding: .5rem 1rem;
+    min-width: 8rem;
+    text-align: center;
+}
+
+.button-link:hover {
+    color: var(--color-brand-primary);
+    text-decoration: underline;
 }

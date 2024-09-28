@@ -18,7 +18,7 @@ function RadioPair({
             id={`${name}-yes`}
             name={name}
             type="radio"
-            className="mt-6 h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+            className="mt-6 h-4 w-4 border-gray-300 text-yellow-700 focus:ring-yellow-700"
             defaultChecked={defaultChecked === "yes"}
             value="yes"
           />
@@ -35,7 +35,7 @@ function RadioPair({
             name={name}
             type="radio"
             value="no"
-            className="mt-6 h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+            className="mt-6 h-4 w-4 border-gray-300 text-yellow-700 focus:ring-yellow-700"
             defaultChecked={defaultChecked === "no"}
           />
           <label
