@@ -32,7 +32,7 @@ export default function Index() {
               invite for more info.{" "}
             </p>
             <p className="pt-6 bold">
-              Lost your invite?{" "}
+              Lost your invite?{" "}<br />
               <a className="italic" href="mailto:neilross.wkdesign@gmail.com">Contact Neil</a>
             </p>
           </div>

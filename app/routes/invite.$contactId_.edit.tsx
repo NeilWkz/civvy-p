@@ -63,7 +63,7 @@ export default function EditContact() {
   };
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
+    <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8 edit-page">
       <h5 className="mb-12">If you can join us on the day, please complete the form below.</h5>
       <div className="mx-auto max-w-2xl">
         <Form key={contact.id} id="contact-form" method="post">
@@ -80,7 +80,7 @@ export default function EditContact() {
                   <select
                     id="rsvp"
                     name="rsvp"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-yellow-700 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 py-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-yellow-700 sm:text-sm sm:leading-6"
                     defaultValue={contact.rsvp}
                     onChange={selectChangeHandler}
                   >
@@ -106,7 +106,7 @@ export default function EditContact() {
                         placeholder="Email address"
                         defaultValue={contact.email}
                         autoComplete="email"
-                        className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                        className="block flex-1 border-0 bg-transparent py-4 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                       />
                     </div>
                   </div>
@@ -129,7 +129,7 @@ export default function EditContact() {
                         name="phone"
                         placeholder="Phone number"
                         autoComplete="tel"
-                        className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                        className="block flex-1 border-0 bg-transparent py-4 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                       />
                     </div>
                   </div>
@@ -148,7 +148,7 @@ export default function EditContact() {
                       name="dietary"
                       defaultValue={contact.dietary}
                       rows={3}
-                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-yellow-700 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-0 py-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-yellow-700 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
@@ -176,7 +176,7 @@ export default function EditContact() {
                         id="numChildren"
                         name="numChildren"
                         defaultValue={contact.numChildren}
-                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-yellow-700 sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md border-0 py-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-yellow-700 sm:text-sm sm:leading-6"
                       >
                         <option value="0">0</option>
                         <option value="1">1</option>
@@ -228,7 +228,7 @@ export default function EditContact() {
                     defaultValue={contact.notes}
                     name="notes"
                     rows={6}
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-yellow-700 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 py-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-yellow-700 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -237,7 +237,7 @@ export default function EditContact() {
                 <span className="ml-3 sm:block">
                   <button
                     type="button"
-                    className="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                    className="inline-flex items-center rounded-md bg-white px-4 py-4 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
                     onClick={() => navigate(-1)}
                   >
                     Cancel
@@ -247,7 +247,7 @@ export default function EditContact() {
                 <span>
                   <button
                     type="submit"
-                    className="inline-flex items-center rounded-md bg-yellow-700 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-yellow-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-700"
+                    className="inline-flex items-center rounded-md bg-yellow-700 px-4 py-4 text-sm font-semibold text-white shadow-sm hover:bg-yellow-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-700"
                   >
                     Complete RSVP
                   </button>

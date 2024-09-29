@@ -51,10 +51,11 @@ export default function Contact() {
     return {
       title: "Jo & Neil's Civil Partnership",
       location: `${ADDRESS_1}, ${POST_CODE}`,
+      description: `To access your personal invite page visit: https://jo-and-neil-get-hitched.co.uk/invite/${contact.id}`,
       start: weekender ? weekendStart : dayStart,
       end: weekender ? weekendEnd : dayEnd,
     };
-  }, [weekender]);
+  }, [weekender, contact.id]);
 
   const googleUrl = useMemo(() => google(eventDetails), [eventDetails]);
   const outlookUrl = useMemo(() => outlook(eventDetails), [eventDetails]);
