@@ -169,7 +169,7 @@ export default function EditContact() {
                       htmlFor="numChildren"
                       className="block text-sm font-medium leading-6 text-gray-900"
                     >
-                      How many children are you bringing?
+                      How many children attending that require a meal?
                     </label>
                     <div className="mt-2">
                       <select
