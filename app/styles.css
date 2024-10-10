@@ -1,0 +1,195 @@
+:root {
+  --color-brand-primary: #b74926;
+  --color-body-text: #1f2c33;
+}
+
+body {
+  background-color: #f5f2e1;
+  color: var(--color-body-text);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Josefin Sans", sans-serif;
+  color: var(--color-body-text);
+}
+
+p,
+a {
+  font-family: "Fira Mono", monospace;
+}
+
+a {
+  color: var(--color-brand-primary);
+  text-decoration: underline;
+}
+
+a:hover {
+  color: var(--color-brand-primary);
+  text-decoration: none;
+}
+
+h1 {
+  font-size: calc(2.986rem + 1vw);
+}
+h2 {
+  font-size: calc(2.488rem + 1vw);
+}
+h3 {
+  font-size: calc(2.074rem + 1vw);
+}
+h4 {
+  font-size: calc(1.728rem + 1vw);
+}
+h5 {
+  font-size: calc(1.44rem + 1vw);
+}
+h6 {
+  font-size: calc(1.2rem + 1vw);
+}
+p {
+  font-size: calc(1rem + 1vw);
+}
+small {
+  font-size: calc(0.833rem + 1vw);
+}
+
+.fira-mono {
+  font-family: "Fira Mono", monospace;
+}
+
+@keyframes clickAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.button-primary {
+  background-color: var(--color-brand-primary);
+  border: none;
+  padding: 10px 14px;
+  position: relative;
+  color: white;
+  transition: 0.3s ease-in-out all;
+  line-height: 1;
+}
+
+.button-primary:active {
+  animation-name: clickAnimation;
+  animation-duration: 0.2s;
+}
+.button-primary:active::after {
+  display: none;
+}
+
+.button-primary::after {
+  transition: 0.3s ease-in-out all;
+  display: block;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  position: absolute;
+  bottom: -10px;
+  z-index: -1;
+  left: -10px;
+}
+
+.button-primary:hover {
+  cursor: pointer;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.button-primary:hover::after {
+  transform: translate(10px, -10px);
+}
+
+.button-invite {
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: 0.1em;
+  font-size: calc(2rem + 1vw);
+}
+
+.button-link {
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 200;
+  font-style: italic;
+  font-size: calc(0.6rem + 1vw);
+}
+
+.button-link:hover {
+  cursor: pointer;
+  color: var(--color-brand-primary);
+  text-decoration: underline;
+}
+
+.spouse {
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: 0.1em;
+  font-size: calc(1.5rem + 1vw);
+}
+
+.initials {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 25vh auto 15vh;
+  max-width: 50vh;
+}
+
+.initials.has-responded {
+  margin: 10vh auto 5vh;
+}
+
+.button-link {
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 200;
+  font-style: italic;
+  text-decoration: none;
+  font-size: calc(0.6rem + 1vw);
+  border: 1px solid var(--color-brand-primary);
+  padding: 0.5rem 1rem;
+  min-width: 8rem;
+  text-align: center;
+}
+
+.button-link:hover {
+  color: var(--color-brand-primary);
+  text-decoration: underline;
+}
+.edit-page {
+  position: relative;
+  overflow: hidden;
+}
+
+.edit-page::after {
+  opacity: 0.6;
+  content: "";
+  position: absolute;
+  height: 25rem;
+  width: 25rem;
+  left: -11rem;
+  bottom: -12rem;
+  background: url("/half-circles-lines.svg") no-repeat right bottom;
+  background-size: contain;
+}
+
+@media screen and (min-width: 768px) {
+  .edit-page::after {
+    position: fixed;
+    opacity: 0.9;
+  }
+}
