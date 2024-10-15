@@ -64,7 +64,7 @@ export default function EditContact() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8 edit-page">
-      <h5 className="mb-12">If you can join us on the day, please complete the form below.</h5>
+      <h5 className="mb-12 text-center">{weekender ?<>If you can join us for the weekend,<br /> please complete the form below.</> :<>If you can join us on the day,<br/> please complete the form below.</> }</h5>
       <div className="mx-auto max-w-2xl">
         <Form key={contact.id} id="contact-form" method="post">
           <div className="space-y-12">
@@ -191,7 +191,9 @@ export default function EditContact() {
 
               {weekender === true && (
                 // Are you planning on camping radio
+              
                 <>
+                <p className="mt-10 text-lg">We&apos;re planning a pizza party & open mic on the Friday, with a Breakfast BBQ on Sunday. We&apos;d love you to join us.</p>
                   <div className="mt-10 grid grid-cols-1">
                     <fieldset>
                       <RadioPair
@@ -202,13 +204,11 @@ export default function EditContact() {
                     </fieldset>
                   </div>
                   <div className="mt-10 grid grid-cols-1">
-                    {/* Would you be interesting in glamping at an additional cost? radio */}
                     <fieldset>
                       <RadioPair
-                        legend=" Would you be interested in glamping at an additional
-                        cost?"
-                        name="wantGlamping"
-                        defaultChecked={contact.wantGlamping}
+                        legend="Can't make the whole weekend? Can you only attend on the Saturday?"
+                        name="onlyDay"
+                        defaultChecked={contact.onlyDay}
                       />
                     </fieldset>
                   </div>
