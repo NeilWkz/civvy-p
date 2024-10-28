@@ -64,7 +64,7 @@ export default function EditContact() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8 edit-page">
-      <h5 className="mb-12 text-center">{weekender ?<>If you can join us for the weekend,<br /> please complete the form below.</> :<>If you can join us on the day,<br/> please complete the form below.</> }</h5>
+      <h5 className="mb-12 text-center">{weekender ?<>If you can join us for the weekend, please complete the form below.</> :<>If you can join us on the day,<br/> please complete the form below.</> }</h5>
       <div className="mx-auto max-w-2xl">
         <Form key={contact.id} id="contact-form" method="post">
           <div className="space-y-12">
