@@ -193,7 +193,8 @@ export default function EditContact() {
                 // Are you planning on camping radio
               
                 <>
-                <p className="mt-10 text-lg">We&apos;re planning a pizza party & open mic on the Friday, with a Breakfast BBQ on Sunday. We&apos;d love you to join us.</p>
+                <p className="mt-10 text-lg">We&apos;ve got the farm for the whole weekend, so if you&apos;re up for it, feel free to camp on the Friday & Saturday night.</p>
+                <p className="mt-2 text-lg">We&apos;re planning a pizza party & open mic on the Friday, with a Breakfast BBQ on Sunday. We&apos;d love you to join us.</p>
                   <div className="mt-10 grid grid-cols-1">
                     <fieldset>
                       <RadioPair
