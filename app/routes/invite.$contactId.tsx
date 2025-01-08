@@ -160,6 +160,12 @@ export default function Contact() {
         </p>
         <p className="pt-6 bold italic">Please RSVP by Feburary 1st, 2025</p>
 
+        {weekender ? (
+          <p className="text-base pt-6 pb-6">
+            Camping is available on the farm, or you can find <a href='https://www.google.com/travel/search?q=hotels%20near%20YO17%208EW&g2lb=4965990%2C4969803%2C72277293%2C72302247%2C72317059%2C72406588%2C72414906%2C72421566%2C72471280%2C72472051%2C72481459%2C72485658%2C72499705%2C72560029%2C72573224%2C72614662%2C72616120%2C72619927%2C72628720%2C72647020%2C72648289%2C72658035%2C72686036%2C72760082%2C72803964%2C72808078%2C72832976&hl=en-GB&gl=uk&cs=1&ssta=1&ts=CAESCAoCCAMKAggDGhwSGhIUCgcI6Q8QBxgEEgcI6Q8QBxgGGAIyAggBKgcKBToDR0JQ&qs=CAE4BlpOMkyqAUkQASoKIgZob3RlbHMoADIfEAEiG9g7XxMN2owDuJjqmEbUGXakRe40VkKqooIMuTIYEAIiFGhvdGVscyBuZWFyIHlvMTcgOGV3&ap=aAE&ictx=1&ved=0CAAQ5JsGahcKEwiYi6i2l-aKAxUAAAAAHQAAAAAQCw' target='_blank' rel='noopener noreferrer'>other accommodation</a> nearby.
+          </p>
+        ) : null}
+
         <div className="p-8">
           <Form action="edit">
             <button className="button-primary button-invite" type="submit">
