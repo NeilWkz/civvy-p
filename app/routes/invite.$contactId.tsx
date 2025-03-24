@@ -158,7 +158,7 @@ export default function Contact() {
             {POST_CODE}
           </a>{" "}
         </p>
-        <p className="pt-6 bold italic">Please RSVP by Feburary 1st, 2025</p>
+        <p className="pt-6 bold italic">Please RSVP by April 1st, 2025</p>
 
         {weekender ? (
           <p className="text-base pt-6 pb-6">
