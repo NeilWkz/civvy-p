@@ -80,16 +80,15 @@ export default function Contact() {
       {contact.hasResponded ? (
         <>
           <h4 className="pt-10 md:max-w-md m-auto text-center italic">
-            Thank you for your RSVP, if your circumstances change you can edit
-            your response below.
+            Thank you for your RSVP
           </h4>
-          <div className="flex content-center mt-5">
+          <div className="flex mt-5 justify-center">
             <button
               onClick={calendarHandler}
-              className="m-auto button-primary inline-flex"
+              className="mr-2 button-secondary inline-flex items-center"
             >
               <svg
-                className="w-4 h-4 mr-2 fill-white"
+                className="w-4 h-4 mr-3 fill-orange-700"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 610.398 610.398"
                 xmlSpace="preserve"
@@ -100,22 +99,32 @@ export default function Contact() {
               </svg>
               Add to calendar
             </button>
+            <a
+              className="ml-5 button-primary inline-flex items-center"
+              href={GOOGLEMAPS}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <svg
+                className="w-5 mr-2 fill-white"
+                xmlns="http://www.w3.org/2000/svg"
+                version="1.1"
+                viewBox="-5.0 -10.0 110.0 135.0"
+              >
+                <path d="m50.012 10.969c1.0469 0.015625 2.0391 0.46875 2.7422 1.2461 3.3164 3.3281 6.6367 6.6523 9.9648 9.9688 8.2656 8.2656 16.535 16.531 24.801 24.797 2.0625 2.0625 2.0586 3.9414-0.019531 6.0195-11.508 11.508-23.02 23.016-34.531 34.523-2.0195 2.0195-3.9258 2.0117-5.957-0.019532-11.531-11.527-23.059-23.055-34.59-34.586-0.9375-0.69141-1.4883-1.7852-1.4844-2.9492s0.5625-2.2578 1.5-2.9453c11.57-11.566 23.137-23.137 34.703-34.707h0.003906c0.72266-0.83594 1.7656-1.3242 2.8672-1.3477zm3.5703 47.652 12.227-12.258-12.25-12.242v8.6836h-1.1172-12.754l-0.003906 0.003906c-1.0938-0.12109-2.1836 0.26172-2.9609 1.0391-0.77734 0.78125-1.1562 1.8711-1.0312 2.9648-0.003906 4.3359-0.007812 8.668 0 13.004v0.85156h7.1484l-0.003906-10.633h10.742z" />
+              </svg>
+              Directions
+            </a>
           </div>
           {showCalendar ? (
             <div className="calendar-links flex gap-6 flex content-center mt-10 justify-center">
               <a href={googleUrl} className="button-link">
                 Google
               </a>
-              <a
-                href={outlookUrl}
-                className="button-link"
-              >
+              <a href={outlookUrl} className="button-link">
                 Outlook
               </a>
-              <a
-                href={icsUrl}
-                className="button-link"
-              >
+              <a href={icsUrl} className="button-link">
                 iPhone
               </a>
             </div>
@@ -162,7 +171,15 @@ export default function Contact() {
 
         {weekender ? (
           <p className="text-base pt-6 pb-6">
-            Camping is available on the farm, or you can find <a href='https://www.google.com/travel/search?q=hotels%20near%20YO17%208EW&g2lb=4965990%2C4969803%2C72277293%2C72302247%2C72317059%2C72406588%2C72414906%2C72421566%2C72471280%2C72472051%2C72481459%2C72485658%2C72499705%2C72560029%2C72573224%2C72614662%2C72616120%2C72619927%2C72628720%2C72647020%2C72648289%2C72658035%2C72686036%2C72760082%2C72803964%2C72808078%2C72832976&hl=en-GB&gl=uk&cs=1&ssta=1&ts=CAESCAoCCAMKAggDGhwSGhIUCgcI6Q8QBxgEEgcI6Q8QBxgGGAIyAggBKgcKBToDR0JQ&qs=CAE4BlpOMkyqAUkQASoKIgZob3RlbHMoADIfEAEiG9g7XxMN2owDuJjqmEbUGXakRe40VkKqooIMuTIYEAIiFGhvdGVscyBuZWFyIHlvMTcgOGV3&ap=aAE&ictx=1&ved=0CAAQ5JsGahcKEwiYi6i2l-aKAxUAAAAAHQAAAAAQCw' target='_blank' rel='noopener noreferrer'>other accommodation</a> nearby.
+            Camping is available on the farm, or you can find{" "}
+            <a
+              href="https://www.google.com/travel/search?q=hotels%20near%20YO17%208EW&g2lb=4965990%2C4969803%2C72277293%2C72302247%2C72317059%2C72406588%2C72414906%2C72421566%2C72471280%2C72472051%2C72481459%2C72485658%2C72499705%2C72560029%2C72573224%2C72614662%2C72616120%2C72619927%2C72628720%2C72647020%2C72648289%2C72658035%2C72686036%2C72760082%2C72803964%2C72808078%2C72832976&hl=en-GB&gl=uk&cs=1&ssta=1&ts=CAESCAoCCAMKAggDGhwSGhIUCgcI6Q8QBxgEEgcI6Q8QBxgGGAIyAggBKgcKBToDR0JQ&qs=CAE4BlpOMkyqAUkQASoKIgZob3RlbHMoADIfEAEiG9g7XxMN2owDuJjqmEbUGXakRe40VkKqooIMuTIYEAIiFGhvdGVscyBuZWFyIHlvMTcgOGV3&ap=aAE&ictx=1&ved=0CAAQ5JsGahcKEwiYi6i2l-aKAxUAAAAAHQAAAAAQCw"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              other accommodation
+            </a>{" "}
+            nearby.
           </p>
         ) : null}
 
