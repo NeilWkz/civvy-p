@@ -1,23 +1,18 @@
 import { Form, useLoaderData } from "@remix-run/react";
-import { useState, useMemo } from "react";
 import { json } from "@remix-run/cloudflare";
 
 import { getContact, updateContact } from "../data";
 import stringToBool from "../utils/stringToBool";
 import type { LoaderFunctionArgs, ActionFunctionArgs } from "@remix-run/node";
 import invariant from "tiny-invariant";
-import classNames from "classnames";
-import { google, outlook, ics } from "calendar-link";
+
 
 const ADDRESS_1 = import.meta.env.VITE_ADDRESS_1;
 const GOOGLEMAPS = import.meta.env.VITE_GOOGLEMAPS;
 const POST_CODE = import.meta.env.VITE_POSTCODE;
 const WEEKEND_DATE = import.meta.env.VITE_WEEKEND_DATE;
 const DATE = import.meta.env.VITE_DATE;
-const weekendStart = import.meta.env.VITE_WEEKEND_START;
-const weekendEnd = import.meta.env.VITE_WEEKEND_END;
-const dayStart = import.meta.env.VITE_DAY_START;
-const dayEnd = import.meta.env.VITE_DAY_END;
+
 
 export const loader = async ({ params, context }: LoaderFunctionArgs) => {
   invariant(params.contactId, "No contactId provided");

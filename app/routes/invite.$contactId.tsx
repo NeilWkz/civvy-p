@@ -76,12 +76,16 @@ export default function Contact() {
   };
 
   return (
-    <div id="contact" className="container mx-auto px-12">
+    <div id="contact" className="container mx-auto max-w-3xl">
       {contact.hasResponded ? (
         <>
-          <h4 className="pt-10 md:max-w-md m-auto text-center italic">
-            Thank you for your RSVP
-          </h4>
+          <div className="pt-10 flex mt-5 justify-between">
+            <Form action="edit">
+              <button className="button-secondary mr-3 text-sm" type="submit">
+                {contact.hasResponded ? "Edit RSVP" : "RSVP"}
+              </button>
+            </Form>
+          </div>
           <div className="flex mt-5 justify-center">
             <button
               onClick={calendarHandler}
@@ -131,83 +135,132 @@ export default function Contact() {
           ) : null}
         </>
       ) : null}
-      <img
-        src="/letters.svg"
-        alt="letters"
-        className={classNames("initials", {
-          "has-responded": contact.hasResponded,
-        })}
-      />
-      <div className="pt-10 md:max-w-md m-auto text-center">
-        <h5>Dear</h5>
-        <h1>{contact.guest ? <>{contact.guest}</> : <i>No Name</i>}</h1>
-        {inviteTypeHandler(contact.inviteSize)}
-        <p className="pt-6">
-          We cordially invite you to celebrate the Civil Partnership of
-        </p>
-        <br />
-        <div className="pt-1 pb-8">
-          {" "}
-          <strong className="spouse">Joanna Quinn</strong>
-          <br /> & <br /> <strong className="spouse">Neil Ross</strong>
-        </div>
-        {weekender ? (
+      <img src="/letters.svg" alt="letters" className="small-initials" />
+
+      <div className="description-body">
+
+      {weekender ? (
+        <>
+          <p>Hello {contact.guest ? <>{contact.guest}</> : <i>dearie</i>}</p>
           <p>
-            For the weekend of <br /> {WEEKEND_DATE}
+            Thank you for your RSVP to our Civil Partnership Party. We
+            can&apos;t wait to spend a summer weekend with you in Yorkshire.
           </p>
-        ) : (
-          <>
-            <p>On {DATE}</p>
-            <p>At 2:00 PM</p>
-          </>
-        )}
-        <p>
-          At {ADDRESS_1} <br />
+          <p>
+            We will be delighted to welcome you to the grounds of {ADDRESS_1} <br />
           <a href={GOOGLEMAPS} target="_blank" rel="noreferrer">
             {POST_CODE}
-          </a>{" "}
-        </p>
-        <p className="pt-6 bold italic">Please RSVP by April 1st, 2025</p>
-
-        {weekender ? (
-          <p className="text-base pt-6 pb-6">
-            Camping is available on the farm, or you can find{" "}
-            <a
-              href="https://www.google.com/travel/search?q=hotels%20near%20YO17%208EW&g2lb=4965990%2C4969803%2C72277293%2C72302247%2C72317059%2C72406588%2C72414906%2C72421566%2C72471280%2C72472051%2C72481459%2C72485658%2C72499705%2C72560029%2C72573224%2C72614662%2C72616120%2C72619927%2C72628720%2C72647020%2C72648289%2C72658035%2C72686036%2C72760082%2C72803964%2C72808078%2C72832976&hl=en-GB&gl=uk&cs=1&ssta=1&ts=CAESCAoCCAMKAggDGhwSGhIUCgcI6Q8QBxgEEgcI6Q8QBxgGGAIyAggBKgcKBToDR0JQ&qs=CAE4BlpOMkyqAUkQASoKIgZob3RlbHMoADIfEAEiG9g7XxMN2owDuJjqmEbUGXakRe40VkKqooIMuTIYEAIiFGhvdGVscyBuZWFyIHlvMTcgOGV3&ap=aAE&ictx=1&ved=0CAAQ5JsGahcKEwiYi6i2l-aKAxUAAAAAHQAAAAAQCw"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              other accommodation
-            </a>{" "}
-            nearby.
+          </a> from 5pm on the 4th of July 2025.
           </p>
-        ) : null}
+          <p>
+            Saturday evening is catered, we will provide some baked goods on
+            Saturday Morning, and we will be barbecuing a breakfast on Sunday
+            morning (veggie & vegan options available).
+          </p>
+          <p>
+            We need to make plans for Friday night; Please respond to let us
+            know what time you will arrive. There is a small pizza oven on site,
+            so for people arriving before 8pm we plan to arrange a
+            make-your-own-pizza party. If you or your party have any special
+            dietary requirements outside of the catered meal, please make your
+            own provisions.
+          </p>
+          <p>
+            We plan to have some drinks on the Friday night. Drinks for Friday
+            evening are BYOB.
+          </p>
+          <p>
+            The venue is licensed on Saturday so only wine served by us or
+            alcohol sold by the bar company is permitted.
+          </p>
+          <h4>Things to pack:</h4>
+          <ul className="list-disc pl-5">
+            <li>Swimwear</li>
 
-        <div className="p-8">
-          <Form action="edit">
-            <button className="button-primary button-invite" type="submit">
-              {contact.hasResponded ? "Edit RSVP" : "RSVP"}
-            </button>
-          </Form>
+            <li>Camping Crockery & Cutlery</li>
 
-          <Form
-            className="pt-12"
-            action="destroy"
-            method="post"
-            onSubmit={(event) => {
-              const response = confirm(
-                "Please confirm you are unable to attend, and you would like us to delete your invite information, and not contact you again regarding this event."
-              );
-              if (!response) {
-                event.preventDefault();
-              }
-            }}
-          >
-            <button className="button-link" type="submit">
-              delete invite
-            </button>
-          </Form>
-        </div>
+            <li>Picnic blanket or chair</li>
+
+            <li>Appropriate footwear</li>
+
+            <li>Sunscreen</li>
+          </ul>
+          <p>
+            There are shower facilities onsite, but there is also an additional
+            outdoor shower, which if you want to use please bring swimwear.
+            (Apparently, kids love it in the summer) Scarborough Beach is 20mins
+            drive away so it would be a shame to spend a weekend on the
+            Yorkshire coast without them in case you fancy a Sunday afternoon
+            dip in the sea.
+          </p>
+          <h4>On the day</h4>
+          <p>Dress code: Garden Party</p>
+          <p>
+            We are hopeful for fine weather and have planned contingencies in
+            any event, but we would ask that guests wear appropriate footwear
+            for the conditions. The farm&apos;s event field is on sand, so conditions
+            should be fair. However, in the event of a rain forecast, please
+            don&apos;t ruin your best shoes.
+          </p>
+          <p>
+            We also have some news to share: we&apos;re expecting a baby on 15th May.
+            We&apos;re pleased to start this new chapter, and all being well,
+            we&apos;ll introduce our little one to you all.
+          </p>
+          <p>
+            Other guests will arrive at 2 pm on the day of the party. We will
+            hold a ceremony followed by a drinks reception, with Dinner served
+            from 6.30pm.
+          </p>
+          <p>
+            The reception will finish at 11.30 pm with the other guests
+            departing by midnight.
+          </p>
+          <p>
+            We are fortunate enough to already have a home that is full of
+            things we love (soon to be even fuller with baby things!), so we
+            politely request no physical gifts. We are grateful for all we have
+            and count ourselves as very lucky just to share this day with you
+            all. Please, please don&apos;t feel you need to give us anything at all -
+            your company at our celebration is enough. However, should you wish
+            to mark the occasion with a gift, we have set up a small collection
+            pot. Any kind contributions will be gratefully put towards a special
+            honeymoon fund, for a trip we hope to take together once our little
+            one is a bit older.
+          </p>
+          <p>We look forward to seeing you then.</p>
+          <p>With love,</p>
+          <p>Jo & Neil</p>
+          <h3>Local taxi companies:</h3>
+          <p>
+            It is best to make a prior reservation with a company should you
+            need a cab
+          </p>
+          <ul>
+            <li>
+              Malton Taxis: <a href="tel:01653475475">01653475475</a>
+            </li>
+            <li>
+              K Cars Malton: <a href="tel:01653919500">01653919500</a>
+            </li>
+            <li>
+              Take Me Taxis Malton: <a href="tel:01653696969">01653696969</a>
+            </li>
+            <li>
+              Boro Cars Scarborough: <a href="tel:01723361111">01723 361111</a>
+            </li>
+            <li>
+              Nippy Taxis Scarborough: <a href="tel:01723377377">01723377377</a>
+            </li>
+            <li>
+              Station Taxis Scarborough:{" "}
+              <a href="tel:01723366366">01723366366</a>
+            </li>
+          </ul>
+        </>
+      ) : (
+        <>Day guests</>
+      )}
       </div>
     </div>
   );

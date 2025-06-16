@@ -121,7 +121,6 @@ small {
   position: relative;
   color: var(--color-brand-primary);
   transition: 0.3s ease-in-out all;
-
 }
 .button-invite {
   font-family: "Josefin Sans", sans-serif;
@@ -164,6 +163,14 @@ small {
   margin: 10vh auto 5vh;
 }
 
+.small-initials {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 10vh auto 5vh;
+  max-width: 20vh;
+}
+
 .button-link {
   font-family: "Josefin Sans", sans-serif;
   font-weight: 200;
@@ -195,6 +202,46 @@ small {
   bottom: -12rem;
   background: url("/half-circles-lines.svg") no-repeat right bottom;
   background-size: contain;
+}
+
+.description-body {
+  p {
+    font-size: 1.4em; /* 16px */
+    font-family: "Josefin Sans", sans-serif;
+    line-height: 1.6;
+    padding-bottom: 0.7em;;
+
+  }
+  h1,
+  h2,
+  h3 {
+    margin: 10px 0px;
+    color: #3d4c5c;
+    font-family: "Josefin Sans", sans-serif;
+
+  }
+  p:first-of-type:first-letter {
+    font-size: 4em;
+    font-weight: bold;
+    float: left;
+    padding-right: 3px;
+  }
+  p:first-of-type:first-line {
+    line-height: 1;
+  }
+  .post > p {
+    padding: 10px 0px 10px 40px;
+  }
+
+  blockquote {
+    background-color: #eaeaea;
+    font-family: "Merriweather", serif;
+    font-style: italic;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin: 12px 0 12px 40px;
+    text-align: center;
+  }
 }
 
 @media screen and (min-width: 768px) {
