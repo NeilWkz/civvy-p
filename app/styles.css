@@ -1,6 +1,7 @@
 :root {
   --color-brand-primary: #b74926;
   --color-body-text: #1f2c33;
+  --color-brand-primary-hover: #ea6b44;
 }
 
 body {
@@ -109,8 +110,17 @@ small {
 .button-primary:hover {
   cursor: pointer;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  color: #eaeaea;
+  border-radius: 8px;
+
+
+  svg {
+    fill: #eaeaea;
+  }
 }
 .button-primary:hover::after {
+  border-radius: 8px;
+
   transform: translate(10px, -10px);
 }
 
@@ -121,6 +131,22 @@ small {
   position: relative;
   color: var(--color-brand-primary);
   transition: 0.3s ease-in-out all;
+  text-decoration: none;
+
+  svg {
+    fill: var(--color-brand-primary);
+  }
+
+  &:hover {
+    border-radius: 8px;
+    box-shadow: rgba(100, 100, 111, 0.2);
+    color: var(--color-brand-primary-hover);
+    border-color: var(--color-brand-primary-hover);
+
+    svg {
+      fill: var(--color-brand-primary-hover);
+    }
+  }
 }
 .button-invite {
   font-family: "Josefin Sans", sans-serif;
@@ -207,30 +233,47 @@ small {
 .description-body {
   p {
     font-size: 1.4em; /* 16px */
-    font-family: "Josefin Sans", sans-serif;
+    /* font-family: "Josefin Sans", sans-serif; */
     line-height: 1.6;
-    padding-bottom: 0.7em;;
-
+    padding-bottom: 0.7em;
   }
   h1,
   h2,
-  h3 {
+  h3,
+  h4 {
     margin: 10px 0px;
     color: #3d4c5c;
     font-family: "Josefin Sans", sans-serif;
-
+    font-weight: 600;
   }
+
+  h3 {
+    font-size: 1.8em;
+  }
+
+  h4 {
+    font-size: 1.6em;
+  }
+
   p:first-of-type:first-letter {
     font-size: 4em;
     font-weight: bold;
     float: left;
-    padding-right: 3px;
+    padding-right: 6px;
+    position: relative;
+    top: -0.5em;
   }
   p:first-of-type:first-line {
     line-height: 1;
+    padding: 0.5em 0;
   }
+
   .post > p {
     padding: 10px 0px 10px 40px;
+  }
+
+  ul {
+    padding-bottom: 1.8em;
   }
 
   blockquote {
