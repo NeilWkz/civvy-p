@@ -20,7 +20,8 @@ h6 {
 }
 
 p,
-a, li {
+a,
+li {
   font-family: "Fira Mono", monospace;
 }
 
@@ -75,6 +76,15 @@ small {
   }
 }
 
+form {
+  display: flex;
+  width: 100%;
+  
+  @media screen and (min-width: 768px) {
+    width: auto;
+  }
+}
+
 .button-primary {
   background-color: var(--color-brand-primary);
   border: none;
@@ -112,7 +122,6 @@ small {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   color: #eaeaea;
   border-radius: 8px;
-
 
   svg {
     fill: #eaeaea;
@@ -196,6 +205,16 @@ small {
   margin: 10vh auto 5vh;
   max-width: 20vh;
 }
+.button {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+
+
+  @media screen and (min-width: 768px) {
+    width: auto;
+  }
+}
 
 .button-link {
   font-family: "Josefin Sans", sans-serif;
@@ -228,6 +247,19 @@ small {
   bottom: -12rem;
   background: url("/half-circles-lines.svg") no-repeat right bottom;
   background-size: contain;
+}
+
+.calendar-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    gap: 2rem;
+  }
 }
 
 .description-body {

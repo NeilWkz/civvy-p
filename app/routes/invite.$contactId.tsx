@@ -77,57 +77,52 @@ export default function Contact() {
     <div id="contact" className="container mx-auto max-w-3xl">
       {contact.hasResponded ? (
         <>
-          {eventStarted ? (
-            <div className="flex mt-5 justify-center">
-              <a
-                className="mr-2 button-secondary inline-flex items-center"
-                href={GOOGLE_FORM}
-                target="_blank"
-                rel="noreferrer"
+          <div className="flex mt-5 justify-center flex-wrap gap-5 pl-5 pr-5">
+            <a
+              className="button button-secondary inline-flex items-center"
+              href={GOOGLE_FORM}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <svg
+                width="50"
+                height="50"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="-5 -10 110 135"
+                className="w-8 mr-2"
               >
-                <svg
-                  width="50"
-                  height="50"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="-5 -10 110 135"
-                >
-                  <path d="M83.02 26.469H70.809l-4.86-6.512a4.538 4.538 0 0 0-3.609-1.808H44.41c-1.41 0-2.761.68-3.61 1.808l-4.859 6.512h-3.699v-1.91a4.061 4.061 0 0 0-4.05-4.059H21.46a4.063 4.063 0 0 0-4.059 4.059v1.91h-.422a6.985 6.985 0 0 0-6.98 6.98v36.97a6.985 6.985 0 0 0 6.98 6.98H38.7c4.199 2.809 9.25 4.45 14.68 4.45s10.468-1.641 14.671-4.45h14.97a6.985 6.985 0 0 0 6.98-6.98v-36.97a6.985 6.985 0 0 0-6.98-6.98zm-62.621-1.91c0-.578.48-1.059 1.059-1.059h6.73c.578 0 1.05.48 1.05 1.059v1.91H20.4zm-3.418 49.84a3.99 3.99 0 0 1-3.98-3.98V39.93h18.851a26.29 26.29 0 0 0-4.968 15.422c0 7.47 3.11 14.23 8.101 19.051h-18zm36.398 4.453c-12.961 0-23.5-10.54-23.5-23.5 0-12.961 10.539-23.5 23.5-23.5s23.5 10.539 23.5 23.5c0 12.96-10.551 23.5-23.5 23.5zM87 70.422a3.99 3.99 0 0 1-3.98 3.98H71.77c4.988-4.82 8.109-11.577 8.109-19.05 0-5.75-1.852-11.078-4.969-15.422H87zm0-33.492H72.398c-4.82-4.98-11.57-8.078-19.02-8.078-7.45 0-14.211 3.102-19.031 8.078H12.999v-3.48a3.99 3.99 0 0 1 3.98-3.98h20.462l5.769-7.72c.281-.37.73-.601 1.2-.601h17.93c.468 0 .921.23 1.21.601l5.762 7.72h13.71a3.99 3.99 0 0 1 3.981 3.98v3.48z" />
-                  <path d="M53.379 39.102c-8.96 0-16.25 7.29-16.25 16.25s7.29 16.25 16.25 16.25 16.25-7.29 16.25-16.25-7.29-16.25-16.25-16.25zm0 29.5c-7.309 0-13.25-5.95-13.25-13.25s5.941-13.25 13.25-13.25 13.25 5.941 13.25 13.25-5.95 13.25-13.25 13.25z" />
-                  <path d="M46.328 55.352c2.012-3.078 3.969-5.031 7.05-7.05-4.07-2.602-9.64 2.98-7.05 7.05z" />
-                </svg>
-                Send us Photos
-              </a>
-              <a
-                className="ml-5 button-primary inline-flex items-center"
-                href={GOOGLEMAPS}
-                target="_blank"
-                rel="noreferrer"
+                <path d="M83.02 26.469H70.809l-4.86-6.512a4.538 4.538 0 0 0-3.609-1.808H44.41c-1.41 0-2.761.68-3.61 1.808l-4.859 6.512h-3.699v-1.91a4.061 4.061 0 0 0-4.05-4.059H21.46a4.063 4.063 0 0 0-4.059 4.059v1.91h-.422a6.985 6.985 0 0 0-6.98 6.98v36.97a6.985 6.985 0 0 0 6.98 6.98H38.7c4.199 2.809 9.25 4.45 14.68 4.45s10.468-1.641 14.671-4.45h14.97a6.985 6.985 0 0 0 6.98-6.98v-36.97a6.985 6.985 0 0 0-6.98-6.98zm-62.621-1.91c0-.578.48-1.059 1.059-1.059h6.73c.578 0 1.05.48 1.05 1.059v1.91H20.4zm-3.418 49.84a3.99 3.99 0 0 1-3.98-3.98V39.93h18.851a26.29 26.29 0 0 0-4.968 15.422c0 7.47 3.11 14.23 8.101 19.051h-18zm36.398 4.453c-12.961 0-23.5-10.54-23.5-23.5 0-12.961 10.539-23.5 23.5-23.5s23.5 10.539 23.5 23.5c0 12.96-10.551 23.5-23.5 23.5zM87 70.422a3.99 3.99 0 0 1-3.98 3.98H71.77c4.988-4.82 8.109-11.577 8.109-19.05 0-5.75-1.852-11.078-4.969-15.422H87zm0-33.492H72.398c-4.82-4.98-11.57-8.078-19.02-8.078-7.45 0-14.211 3.102-19.031 8.078H12.999v-3.48a3.99 3.99 0 0 1 3.98-3.98h20.462l5.769-7.72c.281-.37.73-.601 1.2-.601h17.93c.468 0 .921.23 1.21.601l5.762 7.72h13.71a3.99 3.99 0 0 1 3.981 3.98v3.48z" />
+                <path d="M53.379 39.102c-8.96 0-16.25 7.29-16.25 16.25s7.29 16.25 16.25 16.25 16.25-7.29 16.25-16.25-7.29-16.25-16.25-16.25zm0 29.5c-7.309 0-13.25-5.95-13.25-13.25s5.941-13.25 13.25-13.25 13.25 5.941 13.25 13.25-5.95 13.25-13.25 13.25z" />
+                <path d="M46.328 55.352c2.012-3.078 3.969-5.031 7.05-7.05-4.07-2.602-9.64 2.98-7.05 7.05z" />
+              </svg>
+              Send us Photos
+            </a>
+            <a
+              className="button button-secondary inline-flex items-center"
+              href={GOOGLEMAPS}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <svg
+                className="w-6 fill-white mr-3"
+                xmlns="http://www.w3.org/2000/svg"
+                version="1.1"
+                viewBox="-5.0 -10.0 110.0 135.0"
               >
-                <svg
-                  className="w-5 mr-2 fill-white"
-                  xmlns="http://www.w3.org/2000/svg"
-                  version="1.1"
-                  viewBox="-5.0 -10.0 110.0 135.0"
-                >
-                  <path d="m50.012 10.969c1.0469 0.015625 2.0391 0.46875 2.7422 1.2461 3.3164 3.3281 6.6367 6.6523 9.9648 9.9688 8.2656 8.2656 16.535 16.531 24.801 24.797 2.0625 2.0625 2.0586 3.9414-0.019531 6.0195-11.508 11.508-23.02 23.016-34.531 34.523-2.0195 2.0195-3.9258 2.0117-5.957-0.019532-11.531-11.527-23.059-23.055-34.59-34.586-0.9375-0.69141-1.4883-1.7852-1.4844-2.9492s0.5625-2.2578 1.5-2.9453c11.57-11.566 23.137-23.137 34.703-34.707h0.003906c0.72266-0.83594 1.7656-1.3242 2.8672-1.3477zm3.5703 47.652 12.227-12.258-12.25-12.242v8.6836h-1.1172-12.754l-0.003906 0.003906c-1.0938-0.12109-2.1836 0.26172-2.9609 1.0391-0.77734 0.78125-1.1562 1.8711-1.0312 2.9648-0.003906 4.3359-0.007812 8.668 0 13.004v0.85156h7.1484l-0.003906-10.633h10.742z" />
-                </svg>
-                Directions
-              </a>
-            </div>
-          ) : (
+                <path d="m50.012 10.969c1.0469 0.015625 2.0391 0.46875 2.7422 1.2461 3.3164 3.3281 6.6367 6.6523 9.9648 9.9688 8.2656 8.2656 16.535 16.531 24.801 24.797 2.0625 2.0625 2.0586 3.9414-0.019531 6.0195-11.508 11.508-23.02 23.016-34.531 34.523-2.0195 2.0195-3.9258 2.0117-5.957-0.019532-11.531-11.527-23.059-23.055-34.59-34.586-0.9375-0.69141-1.4883-1.7852-1.4844-2.9492s0.5625-2.2578 1.5-2.9453c11.57-11.566 23.137-23.137 34.703-34.707h0.003906c0.72266-0.83594 1.7656-1.3242 2.8672-1.3477zm3.5703 47.652 12.227-12.258-12.25-12.242v8.6836h-1.1172-12.754l-0.003906 0.003906c-1.0938-0.12109-2.1836 0.26172-2.9609 1.0391-0.77734 0.78125-1.1562 1.8711-1.0312 2.9648-0.003906 4.3359-0.007812 8.668 0 13.004v0.85156h7.1484l-0.003906-10.633h10.742z" />
+              </svg>
+              Directions
+            </a>
+          </div>
+          {!eventStarted && (
             <>
-              <div className="flex mt-5 justify-center mb-10">
-                <Form action="edit">
-                  <button className="button-secondary mr-3" type="submit">
-                    {contact.hasResponded ? "Edit RSVP" : "RSVP"}
-                  </button>
-                </Form>
+              <div className="flex mt-5 justify-center flex-wrap gap-5 pl-5 pr-5 mb-10">
                 <button
                   onClick={calendarHandler}
-                  className="mr-2 button-secondary inline-flex items-center"
+                  className="button button-secondary inline-flex items-center"
                 >
                   <svg
-                    className="w-4 h-4 mr-3 fill-orange-700"
+                    className="w-4 h-4 mr-2 fill-orange-700"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 610.398 610.398"
                     xmlSpace="preserve"
@@ -138,6 +133,14 @@ export default function Contact() {
                   </svg>
                   Add to calendar
                 </button>
+                <a href="view" className="button button-secondary">
+                  View Invite
+                </a>
+                <Form action="edit">
+                  <button className="button button-secondary" type="submit">
+                    {contact.hasResponded ? "Edit RSVP" : "RSVP"}
+                  </button>
+                </Form>
               </div>
               {showCalendar ? (
                 <div className="calendar-links flex gap-6 flex content-center mt-10 justify-center">
@@ -152,14 +155,13 @@ export default function Contact() {
                   </a>
                 </div>
               ) : null}
-              
             </>
           )}
         </>
       ) : null}
       <img src="/letters.svg" alt="letters" className="small-initials" />
 
-      <div className="description-body">
+      <div className="description-body pl-5 pr-5">
         <p>Hello {contact.guest ? <>{contact.guest}</> : <i>dearie</i>}</p>
 
         {weekender ? (
@@ -227,9 +229,9 @@ export default function Contact() {
               forecast, please don&apos;t ruin your best shoes.
             </p>
             <p>
-              We also have some news to share: we&apos;re expecting a baby on
-              15th May. We&apos;re pleased to start this new chapter, and all
-              being well, we&apos;ll introduce our little one to you all.
+              We also have some news to share: We welcomed our daughter Marcie
+              on May the 8th. She is a happy and healthy and we are excited to
+              introduce her to you all at the party.
             </p>
             <p>
               Other guests will arrive at 2 pm on the day of the party. We will
@@ -295,7 +297,8 @@ export default function Contact() {
 
             <p>
               We also have some news to share: We welcomed our daughter Marcie
-              on May the 8th.
+              on May the 8th. She is a happy and healthy and we are excited to
+              introduce her to you all at the party.
             </p>
             <p>
               We&apos;re so happy that she will be joining us to celebrate with
