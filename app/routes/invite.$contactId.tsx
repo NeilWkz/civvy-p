@@ -1,4 +1,4 @@
-import { Form, useLoaderData } from "@remix-run/react";
+import { Form, useLoaderData, Link } from "@remix-run/react";
 import { useState, useMemo } from "react";
 import { json } from "@remix-run/cloudflare";
 
@@ -75,6 +75,7 @@ export default function Contact() {
 
   return (
     <div id="contact" className="container mx-auto max-w-3xl">
+      <img src="/letters.svg" alt="letters" className="head-initials" />
       {contact.hasResponded ? (
         <>
           <div className="flex mt-5 justify-center flex-wrap gap-5 pl-5 pr-5">
@@ -133,9 +134,9 @@ export default function Contact() {
                   </svg>
                   Add to calendar
                 </button>
-                <a href="view" className="button button-secondary">
+                <Link to="view" className="button button-secondary">
                   View Invite
-                </a>
+                </Link>
                 <Form action="edit">
                   <button className="button button-secondary" type="submit">
                     {contact.hasResponded ? "Edit RSVP" : "RSVP"}
@@ -159,6 +160,8 @@ export default function Contact() {
           )}
         </>
       ) : null}
+
+  
       <img src="/letters.svg" alt="letters" className="small-initials" />
 
       <div className="description-body pl-5 pr-5">
@@ -344,33 +347,163 @@ export default function Contact() {
             <p>Jo & Neil</p>
           </>
         )}
-
-        <h3>Local taxi companies:</h3>
-        <p>
-          It is best to make a prior reservation with a company should you need
-          a cab
-        </p>
-        <ul>
-          <li>
-            Malton Taxis: <a href="tel:01653475475">01653475475</a>
-          </li>
-          <li>
-            K Cars Malton: <a href="tel:01653919500">01653919500</a>
-          </li>
-          <li>
-            Take Me Taxis Malton: <a href="tel:01653696969">01653696969</a>
-          </li>
-          <li>
-            Boro Cars Scarborough: <a href="tel:01723361111">01723 361111</a>
-          </li>
-          <li>
-            Nippy Taxis Scarborough: <a href="tel:01723377377">01723377377</a>
-          </li>
-          <li>
-            Station Taxis Scarborough: <a href="tel:01723366366">01723366366</a>
-          </li>
-        </ul>
+        
       </div>
+          <div className="question-wrap mx-8 mt-2">
+        <details className="question py-4 border-b border-grey-lighter">
+          <summary className="flex items-center font-bold">
+            Menu
+            <button className="ml-auto">
+              <svg
+                className="fill-current opacity-75 w-4 h-4 -mr-1"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+              >
+                <path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z" />
+              </svg>
+            </button>
+          </summary>
+
+          <div className="mt-4 leading-normal text-md ">
+            <h6>Canapes:</h6>
+            <ul>
+              <li>
+                <strong>Beef Shin Croquettes</strong>:<br />
+                Confit beef shin, wild mushroom dexelle & black garlic aioli
+              </li>
+              <li>
+                <strong>Buttermilk Chicken</strong>:<br />
+                Crispy buttermilk chicken & Creole mayo
+              </li>
+              <li>
+                <strong>Mac & Cheese Bites with truffle mayo</strong>:<br />
+                Three cheese mac & cheese bites with truffle mayo
+              </li>
+              <li>
+                <strong>Truffle Arancini with marinara sauce</strong>:<br />
+                Truffle and wild mushroom arancini balls & marinara sauce
+              </li>
+            </ul>
+
+            <h6 className="mt-4">Omnivore Sharing Starters:</h6>
+            <ul>
+              <li>
+                <strong>Seafood Board</strong>:<br />
+                Potted Whitby crab, prawn & crayfish, fried calamari, fennel
+                remoulade, pickled cucumber salad, lemon aioli, artisan bread
+              </li>
+            </ul>
+
+            <h6 className="mt-4">Vegetarian Starter:</h6>
+            <ul>
+              <li>
+                <strong>Eggs & Soldiers</strong>:<br />
+                Hen's egg & brioche soldiers, charred asparagus, truffled
+                hollandaise
+              </li>
+            </ul>
+
+            <h6 className="mt-4">Vegan Starter:</h6>
+            <ul>
+              <li>
+                <strong>Charred Celeriac</strong>:<br />
+                Ember roast celeriac, truffle aioli, chimichurri (VE)
+              </li>
+            </ul>
+
+            <h6 className="mt-4">Omnivore Sharing Main:</h6>
+            <ul>
+              <li>
+                <strong>Feasting Board</strong>:<br />
+                Rosemary & garlic porchetta pork belly, chermoula marinated
+                chicken, wild garlic flatbread
+              </li>
+            </ul>
+
+            <h6 className="mt-4">Vegetarian Sharing Main:</h6>
+            <ul>
+              <li>
+                <strong>Feasting Board</strong>:<br />
+                Cauliflower shawarma with pomegranate, tahini & pine nuts,
+                grilled marinated courgettes, charred halloumi, chickpea, hummus
+                & dukkah, coriander flatbread
+              </li>
+            </ul>
+
+            <h6 className="mt-4">Sharing Sides:</h6>
+            <ul>
+              <li>
+                <strong>Blackened Hispi Cabbage</strong>:<br />
+                Wild rice & tahini yogurt
+              </li>
+              <li>
+                <strong>Charred Broccoli & Courgette Salad</strong>:<br />
+                Charred with lemon, feta, pumpkin seeds
+              </li>
+            </ul>
+
+            <h6 className="mt-4">Kids Menu:</h6>
+            <ul>
+              <li>
+                <strong>Starter: Mac & Cheese</strong>
+              </li>
+              <li>
+                <strong>Omni Main: Happy Hotdogs</strong>:<br />
+                Yorkshire pork sausage in a hotdog roll with ketchup
+              </li>
+              <li>
+                <strong>Veggie Main: Hidden Veg Pasta</strong>:<br />
+                Fusilli pasta with creamy tomato sauce and 'hidden veggies'
+              </li>
+            </ul>
+          </div>
+        </details>
+        <details className="question py-4 border-b border-grey-lighter">
+          <summary className="flex items-center font-bold">
+            Local Taxi Companies
+            <button className="ml-auto">
+              <svg
+                className="fill-current opacity-75 w-4 h-4 -mr-1"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+              >
+                <path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z" />
+              </svg>
+            </button>
+          </summary>
+
+          <div className="mt-4 leading-normal text-md ">
+            <p>
+              It is best to make a prior reservation with a company should you
+              need a cab
+            </p>
+            <ul>
+              <li>
+                Malton Taxis: <a href="tel:01653475475">01653475475</a>
+              </li>
+              <li>
+                K Cars Malton: <a href="tel:01653919500">01653919500</a>
+              </li>
+              <li>
+                Take Me Taxis Malton: <a href="tel:01653696969">01653696969</a>
+              </li>
+              <li>
+                Boro Cars Scarborough:{" "}
+                <a href="tel:01723361111">01723 361111</a>
+              </li>
+              <li>
+                Nippy Taxis Scarborough:{" "}
+                <a href="tel:01723377377">01723377377</a>
+              </li>
+              <li>
+                Station Taxis Scarborough:{" "}
+                <a href="tel:01723366366">01723366366</a>
+              </li>
+            </ul>
+          </div>
+        </details>
+      </div>
+       <img src="/letters.svg" alt="letters" className="head-initials" />
     </div>
   );
 }
