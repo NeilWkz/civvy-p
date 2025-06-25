@@ -146,16 +146,7 @@ export default function Contact() {
                   </svg>
                   Add to calendar
                 </button>
-                <Link to="view" className="button button-secondary">
-                  View Invite
-                </Link>
-                <Form action="edit">
-                  <button className="button button-secondary" type="submit">
-                    {contact.hasResponded ? "Edit RSVP" : "RSVP"}
-                  </button>
-                </Form>
-              </div>
-              {showCalendar ? (
+                {showCalendar ? (
                 <div className="calendar-links flex gap-6 flex content-center mt-10 justify-center">
                   <a href={googleUrl} className="button-link">
                     Google
@@ -168,6 +159,16 @@ export default function Contact() {
                   </a>
                 </div>
               ) : null}
+                <Link to="view" className="button button-secondary">
+                  View Invite
+                </Link>
+                <Form action="edit">
+                  <button className="button button-secondary" type="submit">
+                    {contact.hasResponded ? "Edit RSVP" : "RSVP"}
+                  </button>
+                </Form>
+              </div>
+              
             </>
           )}
         </>
