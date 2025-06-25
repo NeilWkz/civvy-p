@@ -1,7 +1,7 @@
 import { Form, useLoaderData, Link } from "@remix-run/react";
 import { useState, useMemo } from "react";
 import { json } from "@remix-run/cloudflare";
-
+import classnames from "classnames";
 import { getContact, updateContact } from "../data";
 import stringToBool from "../utils/stringToBool";
 import type { LoaderFunctionArgs, ActionFunctionArgs } from "@remix-run/node";
@@ -72,7 +72,7 @@ export default function Contact() {
 
   const calendarHandler = (event: string) => {
     event.preventDefault();
-    setShowCalendar(true);
+    setShowCalendar(!showCalendar);
   };
 
   return (
@@ -132,7 +132,10 @@ export default function Contact() {
               <div className="flex mt-5 justify-center flex-wrap gap-5 pl-5 pr-5 mb-10">
                 <button
                   onClick={calendarHandler}
-                  className="button button-secondary inline-flex items-center"
+                  className={classnames({
+                    "button button-secondary inline-flex items-center": true,
+                    "button-secondary-active": showCalendar,
+                  })}
                 >
                   <svg
                     className="w-4 h-4 mr-2 fill-orange-700"
@@ -147,7 +150,7 @@ export default function Contact() {
                   Add to calendar
                 </button>
                 {showCalendar ? (
-                <div className="calendar-links flex gap-6 flex content-center mt-10 justify-center">
+                <div className="calendar-links flex gap-6 flex content-center justify-center">
                   <a href={googleUrl} className="button-link">
                     Google
                   </a>
