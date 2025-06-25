@@ -17,6 +17,7 @@ const dayStart = import.meta.env.VITE_DAY_START;
 const dayEnd = import.meta.env.VITE_DAY_END;
 const GOOGLE_FORM = import.meta.env.VITE_GOOGLEFORM;
 const WHATSAPP_GROUP = import.meta.env.VITE_WHATSAPP_GROUP;
+const BABYPHOTOS = import.meta.env.VITE_BABY_PHOTOS;
 
 export const loader = async ({ params, context }: LoaderFunctionArgs) => {
   invariant(params.contactId, "No contactId provided");
@@ -244,7 +245,7 @@ export default function Contact() {
             </p>
             <p>
               We also have some news to share: We welcomed our daughter Marcie
-              on May the 8th. She is a happy and healthy and we are excited to
+              on May the 8th. She is happy and healthy and we are excited to
               introduce her to you all at the party.
             </p>
             <p>
@@ -511,6 +512,24 @@ export default function Contact() {
                 <a href="tel:01723366366">01723366366</a>
               </li>
             </ul>
+          </div>
+        </details>
+          <details className="question py-4 border-b border-grey-lighter">
+          <summary className="flex items-center font-bold">
+            Baby Photos
+            <button className="ml-auto">
+              <svg
+                className="fill-current opacity-75 w-4 h-4 -mr-1"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+              >
+                <path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z" />
+              </svg>
+            </button>
+          </summary>
+
+          <div className="mt-4 leading-normal text-md ">
+           <a href={BABYPHOTOS} target="_blank" rel="noopener noreferrer">Some Pics of Marcie</a>
           </div>
         </details>
       </div>
