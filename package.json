@@ -25,6 +25,7 @@
     "calendar-link": "^2.7.0",
     "canvas-confetti": "^1.9.3",
     "classnames": "^2.5.1",
+    "confetti-js": "^0.0.18",
     "hono": "^4.6.2",
     "isbot": "^4.1.0",
     "link": "^2.1.1",

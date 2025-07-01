@@ -1,5 +1,5 @@
 import { Form, useLoaderData, Link } from "@remix-run/react";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { json } from "@remix-run/cloudflare";
 import classnames from "classnames";
 import { getContact, updateContact } from "../data";
@@ -7,6 +7,7 @@ import stringToBool from "../utils/stringToBool";
 import type { LoaderFunctionArgs, ActionFunctionArgs } from "@remix-run/node";
 import invariant from "tiny-invariant";
 import { google, outlook, ics } from "calendar-link";
+import ConfettiGenerator from "confetti-js";
 
 const ADDRESS_1 = import.meta.env.VITE_ADDRESS_1;
 const GOOGLEMAPS = import.meta.env.VITE_GOOGLEMAPS;
@@ -50,7 +51,7 @@ export default function Contact() {
   const eventStarted = useMemo(() => {
     //subtract 1 day from the weekend start date to check if the event has started
     const weekendStartDate = new Date(weekendStart);
-    const dayOf = weekendStartDate.setDate(weekendStartDate.getDate() - 2);
+    const dayOf = weekendStartDate.setDate(weekendStartDate.getDate() - 1);
     const startDate = new Date(dayOf);
 
     return startDate.getTime() < Date.now();
@@ -74,6 +75,16 @@ export default function Contact() {
     event.preventDefault();
     setShowCalendar(!showCalendar);
   };
+
+  useEffect(() => {
+    if (eventStarted) {
+    const confettiSettings = { target: "confetti", max: 100  };
+    const confetti = new ConfettiGenerator(confettiSettings);
+    confetti.render();
+
+    return () => confetti.clear();
+    }
+  }, [eventStarted]); // add the var dependencies or not
 
   return (
     <div id="contact" className="container mx-auto max-w-3xl">
@@ -100,14 +111,19 @@ export default function Contact() {
               </svg>
               Send us Photos
             </a>
-                 <a
+            <a
               className="button button-secondary inline-flex items-center"
               href={WHATSAPP_GROUP}
               target="_blank"
               rel="noreferrer"
             >
-             <svg xmlns="http://www.w3.org/2000/svg"                 className="w-5 mr-2"
-  viewBox="0 0 30.667 30.667"><path d="M30.667 14.939c0 8.25-6.74 14.938-15.056 14.938a15.1 15.1 0 0 1-7.276-1.857L0 30.667l2.717-8.017a14.787 14.787 0 0 1-2.159-7.712C.559 6.688 7.297 0 15.613 0c8.315.002 15.054 6.689 15.054 14.939zM15.61 2.382c-6.979 0-12.656 5.634-12.656 12.56 0 2.748.896 5.292 2.411 7.362l-1.58 4.663 4.862-1.545c2 1.312 4.393 2.076 6.963 2.076 6.979 0 12.658-5.633 12.658-12.559C28.27 8.016 22.59 2.382 15.61 2.382zm7.604 15.998c-.094-.151-.34-.243-.708-.427-.367-.184-2.184-1.069-2.521-1.189-.34-.123-.586-.185-.832.182-.243.367-.951 1.191-1.168 1.437-.215.245-.43.276-.799.095-.369-.186-1.559-.57-2.969-1.817-1.097-.972-1.838-2.169-2.052-2.536-.217-.366-.022-.564.161-.746.165-.165.369-.428.554-.643.185-.213.246-.364.369-.609.121-.245.06-.458-.031-.643-.092-.184-.829-1.984-1.138-2.717-.307-.732-.614-.611-.83-.611-.215 0-.461-.03-.707-.03s-.646.089-.983.456-1.291 1.252-1.291 3.054c0 1.804 1.321 3.543 1.506 3.787.186.243 2.554 4.062 6.305 5.528 3.753 1.465 3.753.976 4.429.914.678-.062 2.184-.885 2.49-1.739.308-.858.308-1.593.215-1.746z"/></svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-5 mr-2"
+                viewBox="0 0 30.667 30.667"
+              >
+                <path d="M30.667 14.939c0 8.25-6.74 14.938-15.056 14.938a15.1 15.1 0 0 1-7.276-1.857L0 30.667l2.717-8.017a14.787 14.787 0 0 1-2.159-7.712C.559 6.688 7.297 0 15.613 0c8.315.002 15.054 6.689 15.054 14.939zM15.61 2.382c-6.979 0-12.656 5.634-12.656 12.56 0 2.748.896 5.292 2.411 7.362l-1.58 4.663 4.862-1.545c2 1.312 4.393 2.076 6.963 2.076 6.979 0 12.658-5.633 12.658-12.559C28.27 8.016 22.59 2.382 15.61 2.382zm7.604 15.998c-.094-.151-.34-.243-.708-.427-.367-.184-2.184-1.069-2.521-1.189-.34-.123-.586-.185-.832.182-.243.367-.951 1.191-1.168 1.437-.215.245-.43.276-.799.095-.369-.186-1.559-.57-2.969-1.817-1.097-.972-1.838-2.169-2.052-2.536-.217-.366-.022-.564.161-.746.165-.165.369-.428.554-.643.185-.213.246-.364.369-.609.121-.245.06-.458-.031-.643-.092-.184-.829-1.984-1.138-2.717-.307-.732-.614-.611-.83-.611-.215 0-.461-.03-.707-.03s-.646.089-.983.456-1.291 1.252-1.291 3.054c0 1.804 1.321 3.543 1.506 3.787.186.243 2.554 4.062 6.305 5.528 3.753 1.465 3.753.976 4.429.914.678-.062 2.184-.885 2.49-1.739.308-.858.308-1.593.215-1.746z" />
+              </svg>
               Join WhatsApp Group
             </a>
             <a
@@ -127,7 +143,11 @@ export default function Contact() {
               Directions
             </a>
           </div>
-          {!eventStarted && (
+        
+
+          {eventStarted ? (
+            <canvas id="confetti"></canvas>
+          ) : (
             <>
               <div className="flex mt-5 justify-center flex-wrap gap-5 pl-5 pr-5 mb-10">
                 <button
@@ -150,18 +170,18 @@ export default function Contact() {
                   Add to calendar
                 </button>
                 {showCalendar ? (
-                <div className="calendar-links flex gap-6 flex content-center justify-center">
-                  <a href={googleUrl} className="button-link">
-                    Google
-                  </a>
-                  <a href={outlookUrl} className="button-link">
-                    Outlook
-                  </a>
-                  <a href={icsUrl} className="button-link">
-                    iPhone
-                  </a>
-                </div>
-              ) : null}
+                  <div className="calendar-links flex gap-6 flex content-center justify-center">
+                    <a href={googleUrl} className="button-link">
+                      Google
+                    </a>
+                    <a href={outlookUrl} className="button-link">
+                      Outlook
+                    </a>
+                    <a href={icsUrl} className="button-link">
+                      Desktop
+                    </a>
+                  </div>
+                ) : null}
                 <Link to="view" className="button button-secondary">
                   View Invite
                 </Link>
@@ -171,13 +191,11 @@ export default function Contact() {
                   </button>
                 </Form>
               </div>
-              
             </>
           )}
         </>
       ) : null}
 
-  
       <img src="/letters.svg" alt="letters" className="small-initials" />
 
       <div className="description-body pl-5 pr-5">
@@ -363,9 +381,55 @@ export default function Contact() {
             <p>Jo & Neil</p>
           </>
         )}
-        
       </div>
-          <div className="question-wrap mx-8 mt-2">
+      <div className="question-wrap mx-8 mt-2">
+        <details className="question py-4 border-b border-grey-lighter">
+          <summary className="flex items-center font-bold">
+            Order of the Day
+            <button className="ml-auto">
+              <svg
+                className="fill-current opacity-75 w-4 h-4 -mr-1"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+              >
+                <path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z" />
+              </svg>
+            </button>
+          </summary>
+
+          <div className="mt-4 leading-normal text-md ">
+            <ul>
+              <li>
+                <strong>&nbsp;2:00 pm</strong>: All guests staying offsite
+                arrive for welcome drinks
+              </li>
+              <li>
+                <strong>&nbsp;3:00 pm</strong>: Ceremony
+              </li>
+              <li>
+                <strong>&nbsp;3:30 pm</strong>: Drinks reception & Jazz
+              </li>
+              <li>
+                <strong>&nbsp;4:00 pm</strong>: Cocktails & Canapes
+              </li>
+              <li>
+                <strong>&nbsp;6:15 pm</strong>: Seated for Toasts
+              </li>
+              <li>
+                <strong>&nbsp;6:30 pm</strong>: Dinner served
+              </li>
+              <li>
+                <strong>&nbsp;8:00 pm</strong>: Dancing
+              </li>
+              <li>
+                <strong>11:30 pm</strong>: Last orders at the bar
+              </li>
+              <li>
+                <strong>12:00 am</strong>: Carriages
+              </li>
+            </ul>
+          </div>
+        </details>
         <details className="question py-4 border-b border-grey-lighter">
           <summary className="flex items-center font-bold">
             Menu
@@ -476,6 +540,31 @@ export default function Contact() {
         </details>
         <details className="question py-4 border-b border-grey-lighter">
           <summary className="flex items-center font-bold">
+            Kid&apos; Cinema
+            <button className="ml-auto">
+              <svg
+                className="fill-current opacity-75 w-4 h-4 -mr-1"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+              >
+                <path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z" />
+              </svg>
+            </button>
+          </summary>
+
+          <img
+            src="/movie-sign.png"
+            className="w-full mt-4"
+            alt="A Cinema masthead with Now Showing: My neighbor Totaro, The Red Turtle, Aladdin, The Toy Story Quadrilogy, Mulan, Encanto"
+          />
+          <p className="mt-4 leading-normal text-sm">
+            We will be providing a kids cinema room for the little ones to watch
+            films in during the evening. The room will be unsupervised so we ask
+            that at least one parent remains present.
+          </p>
+        </details>
+        <details className="question py-4 border-b border-grey-lighter">
+          <summary className="flex items-center font-bold">
             Local Taxi Companies
             <button className="ml-auto">
               <svg
@@ -518,7 +607,7 @@ export default function Contact() {
             </ul>
           </div>
         </details>
-          <details className="question py-4 border-b border-grey-lighter">
+        <details className="question py-4 border-b border-grey-lighter">
           <summary className="flex items-center font-bold">
             Baby Photos
             <button className="ml-auto">
@@ -533,11 +622,13 @@ export default function Contact() {
           </summary>
 
           <div className="mt-4 leading-normal text-md ">
-           <a href={BABYPHOTOS} target="_blank" rel="noopener noreferrer">Some Pics of Marcie</a>
+            <a href={BABYPHOTOS} target="_blank" rel="noopener noreferrer">
+              Some Pics of Marcie
+            </a>
           </div>
         </details>
       </div>
-       <img src="/letters.svg" alt="letters" className="head-initials" />
+      <img src="/letters.svg" alt="letters" className="head-initials" />
     </div>
   );
 }
