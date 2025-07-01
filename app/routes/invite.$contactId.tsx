@@ -540,7 +540,7 @@ export default function Contact() {
         </details>
         <details className="question py-4 border-b border-grey-lighter">
           <summary className="flex items-center font-bold">
-            Kid&apos; Cinema
+            Kid&apos;s Cinema
             <button className="ml-auto">
               <svg
                 className="fill-current opacity-75 w-4 h-4 -mr-1"
