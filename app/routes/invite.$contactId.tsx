@@ -49,10 +49,7 @@ export default function Contact() {
   const weekender = stringToBool(contact.weekender);
 
   const eventStarted = useMemo(() => {
-    //subtract 1 day from the weekend start date to check if the event has started
-    const weekendStartDate = new Date(weekendStart);
-    const dayOf = weekendStartDate.setDate(weekendStartDate.getDate() - 1);
-    const startDate = new Date(dayOf);
+    const startDate = new Date(dayStart);
 
     return startDate.getTime() < Date.now();
   }, []);
