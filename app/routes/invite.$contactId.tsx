@@ -366,7 +366,7 @@ export default function Contact() {
               >
                 a small collection pot
               </a>
-              . Any kind contributions will be gratefully put towards a special
+              . (The company cheekily suggest an 8% donation to them for processing fees, the fee is 2% so don&quote;t over pay) Any kind contributions will be gratefully put towards a special
               honeymoon fund, for a trip we hope to take together once our
               little one is a bit older.
             </p>
